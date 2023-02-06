@@ -1,0 +1,636 @@
+@use '../../sass/variables'
+
+
+.invoices, .invoices-dark
+    min-height: 100vh
+    width: 100%
+    display: flex
+    justify-content: center
+    padding-top: 5rem
+    overflow: hidden
+    background-color: variables.$light-color
+    padding-left: 0rem
+    transition: .4s
+    @media (max-width: 1600px)
+        padding-left: 7.5rem
+    @media (max-width: 1000px)
+        padding-left: 0
+        padding-top: 13rem
+    @media (max-width: 550px)
+        padding-top: 9rem
+
+
+    &-container 
+        height: 95vh
+        width: 85%
+        max-width: 1000px
+
+        .header
+            display: flex
+            justify-content: space-between
+
+            .title
+                display: flex
+                flex-direction: column
+                gap: 1rem
+
+                p
+                    color: variables.$grayDark-color
+
+            .management
+                display: flex
+                align-items: center
+                gap: 3rem
+                cursor: pointer
+                @media (max-width: 750px)
+                    gap: 1rem
+                
+
+                .filter-status
+                    display: flex
+                    gap: 1rem
+                    position: relative
+
+                    p
+                        height: 40px    
+                        line-height: 40px
+                        transition: .4s
+                        display: flex
+                        gap: 1rem
+
+                @media (hover: hover)
+                    p:hover
+                        transform: scale(0.95)
+
+                    i
+                        color: variables.$purple-color
+                        line-height: 40px
+                
+                button
+                    padding: .5rem
+                    padding-right: 1rem
+                    font-size: 0.9rem
+                    @media (max-width: 550px)
+                        width: 95px
+        
+                    span
+                        background: #fff
+                        color: variables.$purple-color
+                        width: 32px
+                        height: 32px
+                        border-radius: 32px
+                        font-size: 2rem
+                        line-height: 38px
+                        text-align: center
+
+                .status-options-container
+                    position: absolute
+                    top: 40px
+                    left: -25px
+                    display: flex
+                    flex-direction: column
+                    padding: 1rem
+                    padding-right: 4rem
+                    padding-bottom: 0
+                    background-color: #fff
+                    z-index: 2
+                    border-radius: 8px
+                    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+                    transform: scale(0)
+                    opacity: 0
+                    @media (max-width: 750px)
+                        top: 60px
+                        left: -70px
+
+                    label
+                        display: flex
+                        margin-bottom: 1rem
+                        cursor: pointer
+                        align-items: center
+
+                        input
+                            margin-right: 1rem
+                            width: 20px
+                            height: 20px
+                            cursor: pointer
+                    
+                    span
+                        width: 80px
+                        color: #000 !important
+
+        .list-container-empty
+            display: flex
+            justify-content: center
+            align-items: center
+            height: 80%
+            gap: 1rem
+            margin-top: 8rem
+
+            .empty
+                width: 30%
+                min-width: 330px
+                text-align: center
+                display: flex
+                flex-direction: column
+                justify-content: center
+                align-items: center
+
+                img
+                    width: 100%
+
+                h2
+                    margin: 2rem
+                    width: 350px
+
+                p
+                    color: variables.$grayDark-color
+
+                    span
+                        color: variables.$grayPurple-dark-color
+                        font-weight: bold
+
+        .list::-webkit-scrollbar 
+            width: 20px
+            @media (max-width: 750px)
+                width: 10px
+            
+        .list::-webkit-scrollbar-thumb
+            background: variables.$grayPurple-light-color
+            border-radius: 8px
+    
+        .list
+            display: flex
+            justify-content: flex-start
+            align-items: center
+            height: 80%
+            gap: 1rem
+            flex-direction: column
+            padding: 0
+            overflow-y: auto
+            margin-top: 2rem
+
+            .invoice-container
+                display: flex
+                justify-content: space-between
+                width: 100%
+                background-color: #fff
+                min-height: 72px
+                align-items: center
+                border-radius: 8px
+                padding: 0 2rem
+                cursor: pointer
+                box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397)
+                flex-wrap: wrap
+                transform: translate(0, -100%) scale(1)
+                opacity: 0
+                border: 1px solid #fff
+                transition: border-color .4s ease !important
+                @media(max-width: 750px)
+                    padding: 1.5rem
+                    min-height: 130px
+                @media (max-width: 400px)
+                    min-height: 150px
+
+                .invoice-id
+                    font-weight: bold
+                    font-size: 1.1rem
+                    span
+                        color: variables.$grayDark-color
+                    @media (max-width: 750px)
+                        order: 1
+                        width: 50%
+                
+                .due
+                    color: variables.$grayPurple-dark-color
+                    font-size: 1.1rem
+                    @media (max-width: 1000px)
+                        font-size: 0.9rem
+                    @media (max-width: 750px)
+                        order: 3
+                        width: 100%
+                        margin-top: 1rem
+                        margin-bottom: -1rem
+                
+                .client
+                    color: variables.$grayPurple-dark-color
+                    font-size: 1.1rem
+                    @media (max-width: 750px)
+                        order: 2
+                        width: 50%
+                        text-align: end
+                
+                .total
+                    font-weight: bold
+                    font-size: 1.3rem
+                    @media (max-width: 750px)
+                        order: 4
+                        height: 40px
+                        line-height: 70px
+
+                .Pending
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    gap: 1rem
+                    @media (max-width: 750px)
+                        order: 5
+                    
+                    p
+                        width: 104px
+                        height: 40px
+                        background: rgba(255, 143, 0, 0.1)
+                        color: #ff8f00
+                        font-size: 1rem
+                        border-radius: 8px
+                        display: flex
+                        justify-content: center
+                        align-items: center
+                        gap: .5rem
+
+                        i
+                            color: #ff8f00
+                            font-size: 0.6rem
+
+                    i
+                        color: variables.$purple-color
+                        font-size: 0.8rem
+                
+                .Paid
+                    display: flex
+                    gap: 1rem
+                    align-items: center
+                    @media (max-width: 750px)
+                        order: 5
+
+                    span
+                        color: variables.$grayPurple-dark-color
+
+                    p
+                        width: 104px
+                        height: 40px
+                        background: rgba(51, 214, 159, 0.15)
+                        color: #33D69F
+                        font-size: 1rem
+                        border-radius: 8px
+                        display: flex
+                        justify-content: center
+                        align-items: center
+                        gap: .5rem
+
+                        i
+                            color: #33D69F
+                            font-size: 0.6rem
+
+                    i
+                        color: variables.$purple-color
+                        font-size: 0.8rem
+
+                .Draft
+                    display: flex
+                    gap: 1rem
+                    align-items: center
+                    @media (max-width: 750px)
+                        order: 5
+
+                    span
+                        color: variables.$grayPurple-dark-color
+
+                    p
+                        width: 104px
+                        height: 40px
+                        background: rgba(0, 0, 0, 0.1)
+                        color: variables.$dark-ligth-color
+                        font-size: 1rem
+                        border-radius: 8px
+                        display: flex
+                        justify-content: center
+                        align-items: center
+                        gap: .5rem
+
+                        i
+                            color: variables.$dark-ligth-color
+                            font-size: 0.6rem
+
+                    i
+                        color: variables.$purple-color
+                        font-size: 0.8rem
+            
+            @media (hover: hover)
+                .invoice-container:hover
+                    border: 1px solid variables.$purple-color
+    
+    .newInvoice::-webkit-scrollbar 
+        width: 20px
+
+    .newInvoice::-webkit-scrollbar-thumb
+        background: variables.$grayPurple-light-color
+        border-radius: 8px
+
+    .newInvoice::-webkit-scrollbar-track
+        background: #fff                
+
+    .newInvoice
+        position: absolute
+        top: 0
+        left: 80px
+        padding-top: 60px
+        z-index: 2
+        background-color: #f8f8f8
+        display: flex
+        flex-direction: column
+        overflow-y: auto
+        height: 100vh
+        z-index: 11
+        transform: translate(-110%)
+        @media (max-width: 1000px)
+            top: 120px
+            border-radius: 0
+            width: 80%
+            left: 0
+            height: 87.5vh
+        @media (max-width: 750px)
+            padding-top: 40px
+            width: 100%
+        @media (max-width: 550px)
+            top: 80px
+            height: 91.7vh
+
+        h2
+            margin-bottom: 4rem
+            padding-left: 100px
+            padding-right: 60px
+            @media (max-width: 1000px)
+                padding-left: 60px
+            @media (max-width: 750px)
+                padding-left: 30px
+                padding-right: 30px
+                margin-bottom: 3rem
+
+        .sub-title
+            font-weight: bold
+            color: variables.$purple-color
+            margin-bottom: 1.5rem
+            padding-left: 100px
+            padding-right: 60px
+            @media (max-width: 1000px)
+                padding-left: 60px
+            @media (max-width: 750px)
+                padding-left: 30px
+                padding-right: 30px
+
+        .input-container
+            display: flex
+            justify-content: center
+            flex-direction: column
+            gap: 1rem
+            padding-left: 100px
+            padding-right: 60px
+            @media (max-width: 1000px)
+                padding-left: 60px
+            @media (max-width: 750px)
+                padding-left: 30px
+                padding-right: 30px
+        
+        .item-list
+            margin-top: 3rem
+            padding-left: 100px
+            padding-right: 60px
+            @media (max-width: 1000px)
+                padding-left: 60px
+            @media (max-width: 750px)
+                padding-left: 30px
+                padding-right: 30px
+
+            h3
+                margin-bottom: 1rem
+                color: variables.$grayDark-color
+
+            .input-container-item
+                display: flex
+                gap: .5rem
+                align-items: flex-end
+                margin-bottom: 1rem
+                flex-wrap: wrap
+
+                label
+                    display: flex
+                    flex-direction: column
+                    gap: .5rem
+                    
+
+                    span
+                        color: variables.$grayPurple-dark-color
+
+                    input
+                        height: 48px
+                        border: 1px solid variables.$grayPurple-light-color
+                        outline: none
+                        padding: 1rem
+                        border-radius: 8px
+                        font-weight: bold
+                        outline: variables.$purple-color
+                        cursor: pointer
+                
+                .total
+                    text-align: center
+                    margin-left: auto
+                    height: 65px
+                    display: flex
+                    flex-direction: column
+                    gap: 1rem
+                    @media (max-width: 750px)
+                        margin-right: auto
+                        margin-left: 1rem
+                        margin-bottom: 2rem
+                
+                i
+                    height: 35px
+                    margin-left: 1rem
+                    margin-right: .5rem
+                    cursor: pointer
+                    @media (max-width: 750px)
+                        font-size: 1.5rem
+                        height: 40px
+                        margin-bottom: 2rem
+
+                .item-input
+                    width: 40%
+                    @media (max-width: 750px)
+                        width: 100%
+                        margin-bottom: 1rem
+                
+                .qty-input
+                    width: 12%
+                    @media (max-width: 750px)
+                        width: 30%
+                        margin-bottom: 2rem
+
+                .price-input
+                    width: 22%  
+                    @media (max-width: 750px)
+                        width: 30%
+                        margin-bottom: 2rem
+
+        button
+            width: 80.5%
+            padding: 1.8rem
+            line-height: 0px
+            margin-top: 1rem
+            margin-left: 100px
+            margin-right: 60px
+            @media (max-width: 1000px)
+                margin: 1rem auto
+            @media (max-width: 750px)
+                width: 90%
+            
+        .save-changes
+            position: sticky
+            z-index: 4
+            display: flex
+            width: 828px
+            background-color: #fff
+            gap: 1rem
+            bottom: 0
+            left: 0 
+            margin-top: 3rem
+            justify-content: flex-end
+            padding: 1.5rem 2.5rem 
+            @media (max-width: 1000px)
+                border-radius: 0
+                width: 100%
+            
+            button
+                max-width: 138px
+                margin: 0
+                @media (max-width: 550px)
+                    margin-bottom: 1rem
+
+            .discard
+                margin-right: auto
+                margin-left: 3rem
+                @media (max-width: 1000px)
+                    margin-left: 0
+
+    .filter
+        width: 100%
+        height: 100%
+        left: 0
+        top: 0
+        position: absolute
+        background: rgba(0, 0, 0, 0.4)
+        display: none
+        z-index: 10
+    
+    .filter2
+        width: 100%
+        height: 100%
+        left: 0
+        top: 0
+        position: absolute
+        background: rgba(0, 0, 0, 0.4)
+        display: none
+        z-index: 12
+
+    .demoMessage-container
+        position: absolute
+        background: #fff
+        top: 50%
+        transform: translate(0,-50%)
+        width: 500px  
+        height: 350px
+        display: none
+        justify-content: center
+        align-items: center
+        flex-direction: column
+        gap: 2rem
+        border-radius: 8px
+        z-index: 13
+        @media (max-width: 600px)
+            width: 80%
+            padding: 0 1rem
+
+        h2
+            line-height: 40px
+            text-align: center
+            @media (max-width: 600px)
+                font-size: 1.5rem
+
+        a
+            display: in
+            height: 40px
+            text-align: center
+            line-height: 40px
+            background-color: variables.$purple-color
+            color: #fff
+            border-radius: 24px
+            width: 80%
+            text-decoration: none
+            transition: .4s
+        @media (hover:hover)
+            a:hover
+                background-color: variables.$purple-light-color
+        
+        button
+            width: 80%
+            height: 40px
+            margin-top: -1rem
+
+.invoices-dark
+    background-color: variables.$darkMode-bg
+    
+    h1, p, span, h2
+        color: #fff !important
+    
+    .newInvoiceSpan
+        color: variables.$purple-color !important
+    
+    .list    
+        .invoice-container
+            background-color: variables.$dark-ligth-color
+            border: 1px solid variables.$dark-ligth-color
+        
+        .Pending
+            p   
+                color: #ff8f00 !important
+        
+        .Paid
+            p
+                color: #33D69F !important
+        .Draft
+            p
+                background-color: rgba(255, 255, 255, 0.1) !important
+                i
+                    color: #fff !important
+    
+    .newInvoice
+        background-color: variables.$darkMode-bg
+
+        span
+            color: #fff !important
+
+        .save-changes
+            background-color: variables.$darkMode-bg
+
+        input
+            background-color: variables.$dark-ligth-color 
+            border: none !important
+            color: #fff
+
+        input::placeholder
+            color: rgba(255, 255, 255, 0.7)
+        
+        i
+            color: variables.$grayDark-color
+
+        select 
+            background-color: variables.$dark-ligth-color 
+            color: #fff
+            border: none
+        
+        .btn3-light
+            background-color: variables.$dark-ligth-color !important
+            color: variables.$grayPurple-light-color
+        @media (hover: hover)
+            .btn3-light:hover
+                background-color: #fff !important
+                color: variables.$grayPurple-dark-color !important

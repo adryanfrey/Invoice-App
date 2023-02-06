@@ -1,0 +1,203 @@
+@use './typography'
+@use './variables'
+
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+    font-family: 'League Spartan', sans-serif
+
+button
+    border: none
+    transition: .4s
+    width: 40px
+    cursor: pointer
+    width: 150px
+    height: 48px
+    color: #fff
+    border-radius: 24px
+    text-align: center
+    font-weight: 700
+
+.btn1
+    display: flex
+    justify-content: space-between
+    padding: 1rem
+    align-items: center
+    background-color: variables.$purple-color
+
+@media (hover:hover)
+    .btn1:hover
+        background: variables.$purple-light-color
+.btn2
+    background-color: variables.$purple-color
+
+@media (hover:hover)
+    .btn2:hover
+        background: variables.$purple-light-color
+
+.btn3-light
+    background-color: variables.$light-color
+    color: variables.$grayPurple-dark-color
+    width: 73px
+
+@media (hover:hover)
+    .btn3-light:hover
+        background: variables.$grayPurple-light-color
+
+.btn3-dark
+    background-color: variables.$dark-ligth-color
+    color: variables.$grayPurple-light-color
+    width: 73px
+
+@media (hover:hover)
+    .btn3-dark:hover
+        background: #fff
+
+.btn4
+    background-color: variables.$dark-ligth-color
+    color: #fff
+    width: 133px
+
+@media (hover:hover)
+    .btn4:hover
+        background: #000
+    
+.btn5
+    background-color: variables.$red-color
+    color: #fff
+    width: 89px
+
+@media (hover:hover)
+    .btn5:hover
+        background: variables.$red-light-color
+    
+.btn6
+    background-color: variables.$light-color
+    color: variables.$grayPurple-dark-color
+    width: 350px
+
+@media (hover:hover)
+    .btn6:hover
+        background: variables.$grayPurple-dark-color
+        color: #fff
+
+.big-input
+    width: 100%
+    display: flex
+    flex-direction: column
+    gap: .5rem
+
+    input
+        height: 48px
+        border: 1px solid variables.$grayPurple-light-color
+        outline: none
+        padding: 1rem
+        border-radius: 8px
+        font-weight: bold
+
+    input::placeholder
+        font-weight: normal
+    
+    input:focus
+            border: 1px solid variables.$purple-color
+
+    span
+        color: variables.$grayPurple-dark-color
+
+.small-input-container
+    width: 100%
+    display: flex
+    justify-content: space-between
+    margin-bottom: 3rem
+    @media (max-width: 750px)
+        flex-wrap: wrap
+
+    .small-input
+        display: flex
+        flex-direction: column
+        width: 31%
+        gap: .5rem
+        @media (max-width: 750px)
+            width: 48%
+            flex-wrap: wrap
+
+        input
+            height: 48px
+            border: 1px solid variables.$grayPurple-light-color
+            outline: none
+            padding: 1rem
+            width: 100%
+            border-radius: 8px
+            font-weight: bold
+        
+        input::placeholder
+            font-weight: normal
+
+        input:focus
+            border: 1px solid variables.$purple-color
+        
+        span
+            color: variables.$grayPurple-dark-color
+            margin-top: .3rem
+
+    .last
+        @media (max-width: 750px)
+            width: 100%
+            margin-top: 1rem
+
+.date-input 
+    width: 100%
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+
+    label
+        width: 48%
+        display: flex
+        flex-direction: column
+        gap: .5rem
+        @media (max-width: 750px)
+            width: 100%
+
+        input
+            height: 48px
+            border: 1px solid variables.$grayPurple-light-color
+            outline: none
+            padding: 1rem
+            border-radius: 8px
+            font-weight: bold
+            outline: variables.$purple-color
+            cursor: pointer
+            position: relative
+            @media (max-width: 750px)
+                margin-bottom: 1rem
+        input[type='date']::-webkit-calendar-picker-indicator
+            background: transparent
+            bottom: 0
+            color: transparent
+            cursor: pointer
+            height: auto
+            left: 0
+            position: absolute
+            right: 0
+            top: 0
+            width: auto
+
+
+        input::placeholder
+            font-weight: normal
+
+        span
+            color: variables.$grayPurple-dark-color
+
+        select
+            height: 48px
+            border: 1px solid variables.$grayPurple-light-color
+            outline: none
+            padding: 1rem
+            border-radius: 8px
+            font-weight: bold
+            cursor: pointer
+
+        
