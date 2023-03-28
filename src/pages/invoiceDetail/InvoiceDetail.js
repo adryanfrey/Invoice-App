@@ -119,6 +119,7 @@ const InvoiceDetail = ({ darkMode }) => {
   useEffect(() => {
     const editForm = document.querySelector('.editInvoice')
     const invoiceDetailFilter = document.querySelector('.invoiceDetail-filter')
+    const invoiceDetail = document.querySelector('.invoiceDetail')
 
     if (display) {
       gsap.to(editForm, { x: 0, duration: 1, ease: "power2.out" })
@@ -409,7 +410,9 @@ const InvoiceDetail = ({ darkMode }) => {
                 window.scrollTo(0,0)
               }} className='btn3-light'>Edit</button>
             }
-            <button onClick={() => setFilter(true)} className='btn5'>Delete</button>
+            <button onClick={() => {
+              window.scrollTo(0,0)
+              setFilter(true)}} className='btn5'>Delete</button>
             {invoice[0].status === 'Paid' || invoice[0].status === 'Draft' ? '' :
               <button id='markPaid' onClick={handleInvoiceStatus} className='btn2'>Mark as Paid</button>
             }

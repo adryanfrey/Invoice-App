@@ -417,7 +417,9 @@ const Invoices = ({ darkMode }) => {
                 </form>
               </div>
             </div>
-            <button onClick={() => setDisplay(true)} className='btn1'><span className='newInvoiceSpan'>+</span> {windowSize < 550 ? 'New' : 'New Invoice'} </button>
+            <button onClick={() => {
+              window.scrollTo(0,0)
+              setDisplay(true)}} className='btn1'><span className='newInvoiceSpan'>+</span> {windowSize < 550 ? 'New' : 'New Invoice'} </button>
           </div>
         </div>
         <div className={invoices.length === 0 ? 'list-container-empty' : 'list'}>
