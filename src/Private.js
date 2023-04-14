@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-import { auth } from "../firebase/config"
+import { auth } from "./firebase/config"
 import { onAuthStateChanged } from "firebase/auth"
 
 import { useNavigate } from "react-router-dom"
@@ -25,7 +25,6 @@ export default function Private({children}) {
                     localStorage.setItem('@InvoiceAppUser', JSON.stringify(userData))
                     setLoading(false)
                     setSigned(true)
-              
                 } else {
                     setLoading(false)
                     setSigned(false)

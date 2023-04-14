@@ -1,5 +1,5 @@
 // sass
-import './navbar.sass'
+import './styles.sass'
 
 // assets
 import logo from '../../assets/logo.png'
@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import { signOut } from 'firebase/auth'
 import { auth } from '../../firebase/config'
 
-const Navbar = ({handleMode, darkMode}) => {
+const Sidebar = ({handleMode, darkMode}) => {
   const navigate = useNavigate('/')
 
   const handleSignOut = () => {
@@ -31,4 +31,4 @@ const Navbar = ({handleMode, darkMode}) => {
   )
 }
 
-export default Navbar
+export default Sidebar

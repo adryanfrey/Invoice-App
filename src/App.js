@@ -11,8 +11,8 @@ import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
  
 // components
-import Navbar from './components/navbar/Navbar';
-import Private from './components/Private';
+import Navbar from './components/sidebar/Sidebar';
+import Private from './Private';
 
 // sass
 import './sass/global.sass'
@@ -24,17 +24,17 @@ import Invoices from './pages/invoices/Invoices';
 import InvoiceDetail from './pages/invoiceDetail/InvoiceDetail';
 
 function App() {
-  const [checkLogin, setCheckLogin] = useState(false)
+  const [checkAuth, setCheckAuth] = useState(false)
   const [darkMode, setDarkMode] = useState(false)
 
-  // check authentication
+// check authentication
   useEffect(() => {
     async function checkLogin() {
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                setCheckLogin(true)
+              setCheckAuth(true)
             } else {
-                setCheckLogin(false)
+              setCheckAuth(false)
             }
         })
     }
@@ -54,7 +54,7 @@ const handleMode = () => {
     <div className="app">
       <BrowserRouter>
         <ToastContainer autoClose={2000} position='top-center'/>
-        {checkLogin && 
+        {checkAuth && 
           <Navbar handleMode={handleMode} darkMode={darkMode} />
         }
         <Routes> 

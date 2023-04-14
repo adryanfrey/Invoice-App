@@ -25,9 +25,33 @@ const Register = () => {
     // navigation
     const navigate = useNavigate('')
 
-    // signOut on reload
+    // signOut if user is signed
     useEffect(() => {
         signOut(auth)
+    }, [])
+
+    // animation when first render 
+    useEffect(() => {
+
+        const registerContainer = document.querySelector('.register-container')
+        const gsapStagger = document.querySelectorAll('.gsapStagger')
+
+        const tl = gsap.timeline({ defaults: { duration: 1 } })
+
+        tl.to(registerContainer, { scale: 1, ease: "back.out(2)" })
+        gsap.fromTo(gsapStagger, { y: -50 }, { y: 0, opacity: 1, stagger: 0.1 })
+
+        // button hover effect
+        const registerBtn = document.querySelector('#registerBtn')
+
+        registerBtn.addEventListener('mouseover', () => {
+            gsap.to(registerBtn, { backgroundColor: '#7e88c3', duration: .4, color: '#fff' })
+        })
+
+        registerBtn.addEventListener('mouseout', () => {
+            gsap.to(registerBtn, { backgroundColor: '#f8f8fb', duration: .4, color: '#7e88c3' })
+        })
+
     }, [])
 
     // register
@@ -40,8 +64,7 @@ const Register = () => {
 
         await createUserWithEmailAndPassword(auth, email, password)
             .then((value) => {
-                console.log(value)
-                toast.success('User created successfully')
+                toast.success('Account created successfully')
                 navigate('/')
             })
             .catch((error) => {
@@ -59,29 +82,6 @@ const Register = () => {
 
     }
 
-    // animation when first render 
-    useEffect(() => {
-
-        const registerContainer = document.querySelector('.register-container')
-        const gsapStagger = document.querySelectorAll('.gsapStagger')
-
-        const tl = gsap.timeline({ defaults: { duration: 1 } })
-
-        tl.to(registerContainer, { scale: 1, ease: "back.out(2)" })
-        gsap.fromTo(gsapStagger, { y: -50 }, { y: 0, opacity: 1, stagger: 0.18 })
-
-        // button hover effect
-        const registerBtn = document.querySelector('#registerBtn')
-
-        registerBtn.addEventListener('mouseover', () => {
-            gsap.to(registerBtn, { backgroundColor: '#7e88c3', duration: .4, color: '#fff' })
-        })
-
-        registerBtn.addEventListener('mouseout', () => {
-            gsap.to(registerBtn, { backgroundColor: '#f8f8fb', duration: .4, color: '#7e88c3' })
-        })
-
-    }, [])
     return (
         <div className='register'>
             <div className='register-container'>
